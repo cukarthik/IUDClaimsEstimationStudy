@@ -1,5 +1,18 @@
-IUDClaimsStudy
+Relative Risk of Cervical Neoplasms Associated with Copper and Levonorgestrel Secreting Intrauterine Devices: <br> Real World Evidence from the OHDSI Network
 ==============================
+
+<img src="https://img.shields.io/badge/Study%20Status-Design%20Finalized-brightgreen.svg" alt="Study Status: Design Finalized"> 
+
+- Analytics use case(s): **`Characterization` and `Population-Level Estimation`**
+- Study type: **`Clinical Application`**
+- Tags: **iud**
+- Study lead: **Matthew Spotnitz**
+- Study lead forums tag: **[Study Forum Post](https://forums.ohdsi.org/t/iud-study-updates/8851)**
+- Study start date: **09/23/2019**
+- Study end date: **-**
+- Protocol: **[Protocol](https://github.com/cukarthik/IUDEHREstimationStudy/blob/master/documents/IUD%20Cervical%20Neoplasms%20Estimation%20Protocol.docx)**
+- Publications: **[Prior single site study (linking pending)]()**
+- Results explorer: **-**
 
 
 Requirements
@@ -99,13 +112,7 @@ How to run
             maxCores = maxCores)
 	```
 
-4. Upload the file ```export/Results<DatabaseId>.zip``` in the output folder to the study coordinator:
-
-	```r
-	submitResults("export/Results<DatabaseId>.zip", key = "<key>", secret = "<secret>")
-	```
-	
-	Where ```key``` and ```secret``` are the credentials provided to you personally by the study coordinator.
+4. Please email both Matt Spotnitz (mes2165 at cumc dot columbia dot edu) and Karthik Natarajan (kn2174 at cumc dot columbia dot edu) an account to upload results. Then upload the file ```export/Results<DatabaseId>.zip``` in the output folder to the study coordinator.
 		
 5. To view the results, use the Shiny app:
 
@@ -116,14 +123,17 @@ How to run
   
   Note that you can save plots from within the Shiny app. It is possible to view results from more than one database by applying `prepareForEvidenceExplorer` to the Results file from each database, and using the same data folder. Set `blind = FALSE` if you wish to be unblinded to the final results.
 
+Development
+===========
+IUDClaimsStudy was developed in ATLAS and R Studio. The package was modified to include additional analyses from the initial Atlas package. All additional analyses and code are located in the _AdditionalAnalysis.R_ file. The following are the additional analyses and modifications:
+1. Calculates counts to additional cohorts for sensitivity analysis
+2. Calculates the cumulative incidence of the cohorts
+3. Calculates the yearly distribution of all cohorts
+4. Creates KM graphs for the cohorts of interest
+5. Copies all diagnostic graphs in the diagnostic folder to the export folder 
+6. All cohort counts and distributions are filtered based on minimum cell count
+
+
 License
 =======
 The IUDClaimsStudy package is licensed under Apache License 2.0
-
-Development
-===========
-IUDClaimsStudy was developed in ATLAS and R Studio.
-
-### Development status
-
-Unknown
